@@ -1,0 +1,22 @@
+{
+  "name": "stencil-signal-render-repro",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Changes to a signal read inside render() do not update the component",
+  "scripts": {
+    "build": "stencil build",
+    "start": "stencil build --dev --watch --serve",
+    "test:issue1": "VITE_CONFIG_NATIVE_IGNORE_WARNING=true vitest run --config src/issue1-render-does-not-update/vitest.config.ts",
+    "test:issue2": "tsc --noEmit -p src/issue2-jsx-types-reject-signal/tsconfig.json",
+    "test:issue3": "vitest run --config src/issue3-signals-off-in-tests/vitest.config.ts"
+  },
+  "devDependencies": {
+    "@stencil/core": "5.0.0-beta.7",
+    "@stencil/vitest": "^1.15.1",
+    "@types/node": "^22.20.2",
+    "typescript": "^5.9.0",
+    "vitest": "^4.1.11",
+    "vitest-environment-stencil": "^1.15.1"
+  }
+}
