@@ -10,7 +10,7 @@ async function renderIssue() {
     const page = await render(<issue-three />);
     await settle();
 
-    return () => page.root.shadowRoot.textContent as string;
+    return () => page.root.shadowRoot!.textContent as string;
 }
 
 test('a signal in JSX renders its value', async () => {

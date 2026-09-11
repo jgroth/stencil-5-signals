@@ -24,6 +24,14 @@ export namespace Components {
         "items": Item[];
         "label": string;
     }
+    /**
+     * Drives the store from the page so the example can be clicked through. A
+     * harness standing in for the host application, not part of the API.
+     */
+    interface TodoDemo {
+    }
+    interface TodoList {
+    }
 }
 declare global {
     interface HTMLIssueOneElement extends Components.IssueOne, HTMLStencilElement {
@@ -48,13 +56,33 @@ declare global {
         prototype: HTMLIssueTwoTargetElement;
         new (): HTMLIssueTwoTargetElement;
     };
+    /**
+     * Drives the store from the page so the example can be clicked through. A
+     * harness standing in for the host application, not part of the API.
+     */
+    interface HTMLTodoDemoElement extends Components.TodoDemo, HTMLStencilElement {
+    }
+    var HTMLTodoDemoElement: {
+        prototype: HTMLTodoDemoElement;
+        new (): HTMLTodoDemoElement;
+    };
+    interface HTMLTodoListElement extends Components.TodoList, HTMLStencilElement {
+    }
+    var HTMLTodoListElement: {
+        prototype: HTMLTodoListElement;
+        new (): HTMLTodoListElement;
+    };
     interface HTMLElementTagNameMap {
         "issue-one": HTMLIssueOneElement;
         "issue-three": HTMLIssueThreeElement;
         "issue-two-target": HTMLIssueTwoTargetElement;
+        "todo-demo": HTMLTodoDemoElement;
+        "todo-list": HTMLTodoListElement;
     }
 }
 declare namespace LocalJSX {
+    type OneOf<K extends string, PropT, AttrT = PropT> = { [P in K]: PropT } & { [P in `attr:${K}`]?: never } | { [P in `attr:${K}`]: AttrT } & { [P in K]?: never };
+
     interface IssueOne {
     }
     interface IssueThree {
@@ -67,7 +95,15 @@ declare namespace LocalJSX {
           * @default []
          */
         "items"?: Item[];
-        "label"?: string;
+        "label": string;
+    }
+    /**
+     * Drives the store from the page so the example can be clicked through. A
+     * harness standing in for the host application, not part of the API.
+     */
+    interface TodoDemo {
+    }
+    interface TodoList {
     }
 
     interface IssueTwoTargetAttributes {
@@ -77,7 +113,9 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "issue-one": IssueOne;
         "issue-three": IssueThree;
-        "issue-two-target": Omit<IssueTwoTarget, keyof IssueTwoTargetAttributes> & { [K in keyof IssueTwoTarget & keyof IssueTwoTargetAttributes]?: IssueTwoTarget[K] } & { [K in keyof IssueTwoTarget & keyof IssueTwoTargetAttributes as `attr:${K}`]?: IssueTwoTargetAttributes[K] } & { [K in keyof IssueTwoTarget & keyof IssueTwoTargetAttributes as `prop:${K}`]?: IssueTwoTarget[K] };
+        "issue-two-target": Omit<IssueTwoTarget, keyof IssueTwoTargetAttributes> & { [K in keyof IssueTwoTarget & keyof IssueTwoTargetAttributes]?: IssueTwoTarget[K] } & { [K in keyof IssueTwoTarget & keyof IssueTwoTargetAttributes as `attr:${K}`]?: IssueTwoTargetAttributes[K] } & { [K in keyof IssueTwoTarget & keyof IssueTwoTargetAttributes as `prop:${K}`]?: IssueTwoTarget[K] } & OneOf<"label", IssueTwoTarget["label"], IssueTwoTargetAttributes["label"]>;
+        "todo-demo": TodoDemo;
+        "todo-list": TodoList;
     }
 }
 export { LocalJSX as JSX };
@@ -90,6 +128,12 @@ declare module "@stencil/core" {
              * An ordinary component with ordinary typed props.
              */
             "issue-two-target": LocalJSX.IntrinsicElements["issue-two-target"] & JSXBase.HTMLAttributes<HTMLIssueTwoTargetElement>;
+            /**
+             * Drives the store from the page so the example can be clicked through. A
+             * harness standing in for the host application, not part of the API.
+             */
+            "todo-demo": LocalJSX.IntrinsicElements["todo-demo"] & JSXBase.HTMLAttributes<HTMLTodoDemoElement>;
+            "todo-list": LocalJSX.IntrinsicElements["todo-list"] & JSXBase.HTMLAttributes<HTMLTodoListElement>;
         }
     }
 }

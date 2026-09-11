@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Reactive controllers plus signals</title>
+        <script type="module" src="/build/signal-issues.esm.js"></script>
+    </head>
+    <body>
+        <h1>Reactive controllers plus signals</h1>
+        <p>
+            The buttons stand in for the host application. They push values into a store that
+            knows nothing about Stencil. <code>todo-list</code> observes a
+            <code>computed</code> over that store.
+        </p>
+        <todo-demo></todo-demo>
+        <hr />
+        <todo-list></todo-list>
+    </body>
+</html>

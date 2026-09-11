@@ -7,7 +7,7 @@ export interface Item {
 /** An ordinary component with ordinary typed props. */
 @Component({ tag: 'issue-two-target', encapsulation: { type: 'shadow' } })
 export class IssueTwoTarget {
-    @Prop() public label: string;
+    @Prop() public label!: string;
     @Prop() public items: Item[] = [];
 
     public render() {
