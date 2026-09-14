@@ -10,9 +10,11 @@
     "test:issue1": "VITE_CONFIG_NATIVE_IGNORE_WARNING=true vitest run --config src/issue1-render-does-not-update/vitest.config.ts",
     "test:issue2": "tsc --noEmit -p src/issue2-jsx-types-reject-signal/tsconfig.json",
     "test:issue3": "vitest run --config src/issue3-signals-off-in-tests/vitest.config.ts",
-    "test:controllers": "vitest run --config src/controller-proof/vitest.config.ts"
+    "test:controllers": "vitest run --config src/controller-proof/vitest.config.ts",
+    "test:issue4": "vitest run --config src/issue4-duplicate-copies/vitest.config.ts"
   },
   "devDependencies": {
+    "@preact/signals-core-copy": "npm:@preact/signals-core@1.14.4",
     "@stencil/core": "5.0.0-beta.7",
     "@stencil/vitest": "^1.15.1",
     "@types/node": "^22.20.2",
